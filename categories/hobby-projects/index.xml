@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hobby Projects on Alex Mollard</title><link>https://alexmollard.dev/categories/hobby-projects/</link><description>Recent content in Hobby Projects on Alex Mollard</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 01 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://alexmollard.dev/categories/hobby-projects/index.xml" rel="self" type="application/rss+xml"/><item><title>Frozen Depths</title><link>https://alexmollard.dev/p/frozen-depths/</link><pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate><guid>https://alexmollard.dev/p/frozen-depths/</guid><description>&lt;img src="https://alexmollard.dev/p/frozen-depths/frozen-depths-cover.png" alt="Featured image of post Frozen Depths" />&lt;p>Frozen depths is a singleplayer, narrative-driven puzzle game. Play as Dr. Fabio; a scientist in search of a cure for a strange illness plaguing the world. Discover a powerful tool and use it to melt and create ice throughout the vast caves of Antarctica.&lt;/p>
+&lt;div class="video-wrapper">
+&lt;iframe loading="lazy"
+src="https://www.youtube.com/embed/Ki7QGZDyZ9Q"
+allowfullscreen
+title="YouTube Video"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;p>&lt;strong>During this project, I was responsible for:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>XYZ Chunking.&lt;/li>
+&lt;li>Marching Cubes.&lt;/li>
+&lt;li>Perlin Noise.&lt;/li>
+&lt;li>Mesh Creating and Modifying in realtime.&lt;/li>
+&lt;li>Unity Gizmos.&lt;/li>
+&lt;li>Serialization.&lt;/li>
+&lt;/ul>
+&lt;p>My key role was to develop a system where you could create and melt ice.
+To achieve this goal I decided that marching cubes would be the best way to approach the problem.&lt;/p>
+&lt;p>This project took 4 months to do in this project I experienced many bugs from ice not connecting to performance being almost a slide show.&lt;/p>
+&lt;p>I started by first making a basic terrain using a marching cube tutorial I followed online then started to implement an editing feature by grabbing points on the mesh by using the XYZ coordinates of the point hit on the mesh and then passing it into a function that could translate it into the array form, in turn, allowing me to increase or decrease the given point to simulate a melting or growing motion to the mesh.&lt;/p>
+&lt;p>After doing this I noticed that there was a huge performance hit as by doing this you would have to reload and create the entire mesh every time a point was edited, so to fix this issue I decided to chunk the entire mesh into 8x8x8 points, This worked but had the issue of the points near other chunks would not connect correctly to fix this problem I made the edge of each chunk be a reference to each other perpendicular chunk around it, this would basically mean that all surrounding chunks share edge points eliminating this bug.&lt;/p>
+&lt;p>For this mechanic to be usable for a designer with minimal programming experience I implemented a system that would grab all child objects and use them as a template of where the ice will be generated, as displayed in the image below.&lt;/p>
+&lt;figure>&lt;img src="https://alexmollard.dev/p/frozen-depths/frozen-depths-before-after.jpg"
+alt="Frozen Depths">&lt;figcaption>
+&lt;p>Frozen Depths Ice Blockout&lt;/p>
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>To increase loading time between scenes I also added a serialization step that would check if the mesh had been made in the past or if a child object had been moved and if a child was moved or it was new it would cache itself for future use as loading from a file would tend to be quicker on larger meshes that contained a lot of children as it would not have to calculate anything or check any children for collisions, This would sometimes increase loading times by over 100%.&lt;/p>
+&lt;p>But even after all this there is still a bug I have yet to fix which is due to some surrounding chunks not updating after a neighboring chunk has been edited, this can be seen in the video below and could be fixed by double checking all neighbors are being updated.&lt;/p>
+&lt;!--Youtube Vid-->
+&lt;div class="video-wrapper">
+&lt;iframe loading="lazy"
+src="https://www.youtube.com/embed/3MWG3Pbg3GE"
+allowfullscreen
+title="YouTube Video"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;p>The game is available to clone on &lt;a class="link" href="https://github.com/AlexMollard/Frozen-Depths-Programmers" target="_blank" rel="noopener"
+>Github&lt;/a>.&lt;/p></description></item></channel></rss>
